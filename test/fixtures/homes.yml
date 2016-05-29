@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  bed: MyString
+  bath: MyString
+  square_footage: MyString
+  sold: false
+
+two:
+  amount: 1
+  bed: MyString
+  bath: MyString
+  square_footage: MyString
+  sold: false
