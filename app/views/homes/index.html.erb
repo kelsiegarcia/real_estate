@@ -1,2 +1,21 @@
-<h1>Homes#index</h1>
-<p>Find me in app/views/homes/index.html.erb</p>
+<h1>
+  <%= @seller.name %> Homes
+</h1>
+<hr />
+
+<% if @homes.any? %>
+    <ul>
+  <% @homes.each do |home| %>
+      <li>
+        <%= link_to home.name, seller_home_path(@seller, home) %>
+      </li>
+      <% end %>
+    </ul>
+<% else %>
+  <h3>No Homes, please add one!</h3>
+<% end %>
+
+<hr />
+
+<%= link_to 'New Home', new_seller_home_path(@seller) %>
+<%= link_to 'Back', seller_path(@seller) %>

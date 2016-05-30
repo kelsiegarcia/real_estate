@@ -1,0 +1,27 @@
+<%= form_for [@seller, @home] do |f| %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :amount %>
+  <%= f.number_field :amount %>
+
+  <%= f.label :bed %>
+  <%= f.text_field :bed %>
+
+  <%= f.label :bath %>
+  <%= f.text_field :bath %>
+
+  <%= f.label :square_footage %>
+  <%= f.text_field :square_footage %>
+
+  <%= f.label :sold %>
+  <%= f.select :sold, [true, false] %>
+
+  <%= f.label :seller_id %>
+  <%= f.text_field :seller_id %>
+
+  <%= f.submit %>
+<% end %>
+
+ 

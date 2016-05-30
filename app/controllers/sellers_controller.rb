@@ -35,18 +35,19 @@ class SellersController < ApplicationController
 
   def destroy
    seller_name = @seller.name
-   @seller.destroy
-   redirect_to sellers_path
+    @seller.destroy
+    flash[:success] = "Seller with name: #{seller_name} destroyed!"
+    redirect_to sellers_path
   end
 
     private
 
    def seller_params
-    params.require(:seller).permit(:name, :seller_type)
+    params.require(:seller).permit(:name, :seller_type, :seller_id)
    end 
 
    def seller
-     @seller = Seller.find(params[:id])
+     @seller = Seller.find(params[:seller_id])
    end
 
    # def home
