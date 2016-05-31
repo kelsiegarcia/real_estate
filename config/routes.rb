@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about', as: 'about'
 
   resources :sellers do
-    resources :homes
+    resources :homes do
+      resources :addresses
+    end
   end
-  resources :addresses
 end
 

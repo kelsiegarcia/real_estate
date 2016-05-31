@@ -9,6 +9,12 @@
 <body>
 
  <%= render 'layouts/navbar' %>
+ <% if flash[:success] %>
+   <%= flash[:success] %>
+ <% end %>
+ <% if flash[:failure] %>
+    <%= flash[:failure] %>
+ <% end %>
 
 <%= yield %>
 

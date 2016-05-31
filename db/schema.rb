@@ -28,13 +28,12 @@ ActiveRecord::Schema.define(version: 20160529054308) do
 
   create_table "homes", force: :cascade do |t|
     t.string   "name"
-    t.integer  "amount"
-    t.string   "bed"
-    t.string   "bath"
-    t.string   "square_footage"
+    t.float    "amount"
+    t.integer  "bed"
+    t.integer  "bath"
+    t.integer  "square_footage"
     t.boolean  "sold"
     t.integer  "seller_id"
-    t.string   "home_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -42,7 +41,6 @@ ActiveRecord::Schema.define(version: 20160529054308) do
   create_table "sellers", force: :cascade do |t|
     t.string   "name"
     t.string   "seller_type"
-    t.string   "seller_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

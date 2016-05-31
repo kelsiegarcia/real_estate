@@ -1,8 +1,8 @@
 <h1><%= @home.name%> </h1>
 <br />
-<body>
-<span>Amount:</span>
-<span> <%= @home.amount %> </span>
+
+<span>Amount: </span>
+<span>$<%= @home.amount %>0</span>
 
 <br />
 
@@ -24,15 +24,31 @@
 <span>Sold:</span>
 <span> <%= @home.sold %> </span>
 
-
+<h3>ADDRESS:</h3>
+<% if @address %>
+  <span><%= @address.street %></span>
+  <span><%= @address.city %></span>
+  <span><%= @address.state %></span>
+  <span><%= @address.zip %></span>
+<% else %>
+<span>No Address listed</span>
+<% end %>
 <br />
-<%= link_to 'Edit', edit_seller_home_path(@seller, @home) %>
+<br />
+| <%= link_to 'Edit Home', edit_seller_home_path(@seller, @home) %> |
 
-<%= link_to 'Delete', seller_home_path(@seller, @home),
-   method: :delete, data: {confirm: 'Really delete?'} %>
+<%= link_to 'Delete Home', seller_home_path(@seller, @home),
+   method: :delete, data: {confirm: 'You sure you want to delete?'} %> |
 
-<%= link_to "#{@seller.name} Listings",
-  seller_homes_path(@seller) %>
+<%= link_to "#{@seller.name}'s Listings",
+  seller_homes_path(@seller) %> |
 
-<%= link_to 'Add Address', new_address_path(:seller_id, :home_id) %>
-</body>
+  <br />
+
+| <%= link_to 'Add Address', new_seller_home_address_path(seller_id: @seller.id, home_id: @home.id) %> |
+
+<% if @home.address %>
+<%= link_to 'Edit Address', edit_seller_home_address_path(seller_id: @seller.id, home_id: @home.id, address_id: @address.id) %> |
+
+<%= link_to 'Delete Address', seller_home_address_path(seller_id: @seller.id, home_id: @home.id, address_id: @address.id), method: :delete, data: {confirm: 'You sure you want to delete?'} %> |
+<% end %>

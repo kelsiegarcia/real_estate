@@ -13,6 +13,7 @@ class SellersController < ApplicationController
   def create
     @seller = Seller.new(seller_params)
     if @seller.save
+      flash[:success] = "Seller with name #{@seller.name} created"
       redirect_to seller_path(@seller)
     else
       render :new

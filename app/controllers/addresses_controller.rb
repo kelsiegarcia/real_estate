@@ -5,39 +5,51 @@ class AddressesController < ApplicationController
   end
 
   def show
-     @address = @seller.home.address.find(params[:id])
+    @address = Address.find(params[:id])
+    @seller = Seller.find(params[:seller_id])
+    @home = Home.find(params[:home_id])
   end
 
   def new
+    @seller = Seller.find(params[:seller_id])
+    @home = Home.find(params[:home_id])
     @address = Address.new
   end
 
   def create
-    @address = Address.new(address_params)
-    if @address.save 
-      redirect_to addresses_path(@address)
+    @seller = Seller.find(params[:seller_id])
+    @home = Home.find(params[:home_id])
+    @home.address = Address.new(address_params)
+    if @home.save 
+      flash[:success] = "Address with Listing name #{@home.name} created"
+      redirect_to seller_home_path(@seller, @home)
     else
       render :new
     end
   end
 
   def edit
-    @address = Address.find(address_params)
+    @seller = Seller.find(params[:seller_id])
+    @home = Home.find(params[:home_id])
+    @address = Address.find(params[:address_id])
   end
 
   def update
+    @seller = Seller.find(params[:seller_id])
     @home = Home.find(params[:address][:home_id])
     @address = Address.find(params[:id])
     if @address.update(address_params)
-      redirect_to address_path(id: @address.id, home_id: @home.id)
+      redirect_to seller_home_address_path(id: @address.id, home_id: @home.id, seller_id: @seller.id)
     else
       render :edit
     end
   end
 
   def destroy
-    Address.find(params[:id]).destroy
-    redirect_to addresses_path
+    @seller = Seller.find(params[:seller_id])
+    @address = Address.find(params[:address_id])
+    @address.destroy
+    redirect_to seller_homes_path(@seller)
   end
 
   private

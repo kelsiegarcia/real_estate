@@ -21,6 +21,7 @@ class HomesController < ApplicationController
   end
 
   def show
+    @address = @home.address
   end
 
   def edit
@@ -46,11 +47,11 @@ class HomesController < ApplicationController
 
     def home_params
       params.require(:home).permit(
-      :name, :bed, :bath, :square_footage, :sold)
+      :name, :amount, :bed, :bath, :square_footage, :sold)
     end
 
     def home
-      @home = @seller.homes.find(params[:id])
+      @home = Home.find(params[:id])
     end
 
     def seller

@@ -1,4 +1,4 @@
-<%= form_for [@home, @address] do |f| %>
+<%= form_for [@seller, @home, @address] do |f| %>
 
   <%= f.label :street %>
   <%= f.text_field :street %>
@@ -11,6 +11,9 @@
 
   <%= f.label :zip %>
   <%= f.text_field :zip %>
+
+  <%= f.hidden_field :seller_id, :value => @seller.id %>
+  <%= f.hidden_field :home_id, :value => @home.id %>
 
 <%= f.submit %>
 <% end %>

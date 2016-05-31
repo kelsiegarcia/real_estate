@@ -7,4 +7,5 @@
 <p>State: <%= @address.state %></p>
 <p>Zip: <%= @address.zip %></p>
 
-<% end %>
+| <%= link_to 'Back to Listing', seller_home_path(
+seller_id: @seller.id, id: @home.id) %> |
