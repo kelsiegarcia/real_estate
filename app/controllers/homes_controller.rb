@@ -3,7 +3,7 @@ class HomesController < ApplicationController
   before_action :home, only: [:show, :edit, :update, :destroy]
 
   def index
-    @homes = Home.all
+    @homes = @seller.homes
   end
 
   def new
@@ -46,11 +46,11 @@ class HomesController < ApplicationController
 
     def home_params
       params.require(:home).permit(
-      :name, :bed, :bath, :square_footage, :sold, :seller_id)
+      :name, :bed, :bath, :square_footage, :sold)
     end
 
     def home
-      @home = Home.find(params[:id])
+      @home = @seller.homes.find(params[:id])
     end
 
     def seller

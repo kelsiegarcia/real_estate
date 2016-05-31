@@ -1,8 +1,8 @@
 <h1>
-  <%= @seller.name %> Homes
+  <%= @seller.name %> Listings
 </h1>
 <hr />
-
+<div class='list'>
 <% if @homes.any? %>
     <ul>
   <% @homes.each do |home| %>
@@ -19,3 +19,4 @@
 
 <%= link_to 'New Home', new_seller_home_path(@seller) %>
 <%= link_to 'Back', seller_path(@seller) %>
+</div>

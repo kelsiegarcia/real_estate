@@ -1,6 +1,7 @@
 <h1>Sellers</h1>
 <br />
-
+<body>
+<div class='list'>
 <% if @sellers.any? %>
   <ul>
     <% @sellers.each do |seller| %>
@@ -13,6 +14,6 @@
   <h3>No Sellers, please add your name.</h3>
 <% end %>
 
-<br />
-
-<%= link_to 'New Seller', new_seller_path %>
+<%= link_to 'Add New Seller', new_seller_path %>
+</body>
+</div>

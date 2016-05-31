@@ -1,2 +1,24 @@
-<h1>Addresses#index</h1>
-<p>Find me in app/views/addresses/index.html.erb</p>
+<h1>
+ Addresses
+</h1>
+<hr />
+
+<% if @addresses.any? %>
+    <ul>
+  <% @addresses.each do |address| %>
+      <li>
+        <%= link_to address.street, addresses_path(@address) %>
+        <%= link_to address.city, addresses_path(@address) %>
+        <%= link_to address.state, addresses_path(@address) %>
+        <%= link_to address.zip, addresses_path(@address) %>
+
+      </li>
+      <% end %>
+    </ul>
+<% else %>
+  <h3>No Address, please add one!</h3>
+<% end %>
+
+<hr />
+
+<%= link_to 'New Address', new_address_path(@address) %>

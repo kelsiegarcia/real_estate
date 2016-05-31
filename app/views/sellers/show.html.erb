@@ -2,12 +2,9 @@
 <%= @seller.name %>
 </h1>
   
+<h2>Seller Type: <%= @seller.seller_type %></h2>
 
-<p> Seller Type 
-</p>
-
-<h2><%= @seller.seller_type %></h2>
-<%= link_to 'Homes', seller_homes_path(@seller) %>
+<p> <%=@seller.name%>'s <%= link_to 'Listings', seller_homes_path(@seller) %></p>
 
 
 <br />

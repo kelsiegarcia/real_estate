@@ -8,6 +8,7 @@ class CreateHomes < ActiveRecord::Migration
       t.string :square_footage
       t.boolean :sold
       t.string :seller_id
+      t.string :home_id
       t.belongs_to :seller
 
       t.timestamps null: false
